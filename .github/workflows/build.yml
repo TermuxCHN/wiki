@@ -18,3 +18,4 @@ jobs:
         time_zone: Asia/Shanghai
         source_branch: main
         source_edit_time: true
+        publish_push_force: true
