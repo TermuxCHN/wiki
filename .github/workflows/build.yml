@@ -1,20 +1,20 @@
-name: shellcheck
-
+name: 'Gitbook'
 on:
   push:
+    branches:
+      - main
   label:
-      types: [created,edited]
+    types: [created,edited]
 jobs:
-  ShellCheck:
+  build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-
-      - name: Build
-        run: |
-          npm i -g gitbook-cli
-          gitbook install
-          gitbook build
-
-
+    - name: Checkout action
+      uses: actions/checkout@v2
+    - name: Gitbook Action          
+      uses: ZanderZhao/gitbook-action@v1.2.4
+      with:
+        token: ${{ secrets.PERSONAL_TOKEN }}
+        time_zone: Asia/Shanghai
+        source_branch: main
+        source_edit_time: true
