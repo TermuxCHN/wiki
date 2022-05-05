@@ -1,0 +1,55 @@
+{
+    "title": "Termux第三方中文维基",
+    "description": "为Termux使用者提供帮助",
+    "author": "TermuxCHN",
+    "output.name": "site",
+    "language": "zh-hans",
+    "gitbook": "3.2.3",
+    "root": ".",
+    "links" : {
+        "sidebar" : {
+            "Home" : "https://github.com/termuxchn"
+        }
+    },
+    
+    "plugins": [
+        "-lunr", 
+        "-search", 
+        "search-pro",
+        "back-to-top-button",
+        "chapter-fold",
+        "code",
+        "splitter",
+        "tbfed-pagefooter",
+        "prism", 
+        "-highlight",
+        "popup",
+        "favicon-absolute"
+        ],
+        "pluginsConfig": {
+            "tbfed-pagefooter": {
+                "copyright": "Copyright &copy TermuxCHN 2022",
+                "modify_label": "该文件修订时间：",
+                "modify_format": "YYYY-MM-DD HH:mm:ss"
+            },
+            "favicon-absolute":{
+                "favicon": "/favicon.ico",
+                "appleTouchIconPrecomposed152": "/appleTouchIconPrecomposed152.png"
+            },
+            "pluginsConfig": {
+                "prism": {
+                    "css": [
+                        "prismjs/themes/prism-tomorrow.css"
+                    ]
+                }
+            }
+        },
+
+	"styles": {
+	    "website": "styles/website.css",
+	    "ebook": "styles/ebook.css",
+	    "pdf": "styles/pdf.css",
+	    "mobi": "styles/mobi.css",
+	    "epub": "styles/epub.css"
+	}
+}
