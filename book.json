@@ -22,17 +22,13 @@
         "splitter",
         "tbfed-pagefooter",
         "page-treeview",
-        "popup",
-        "favicon-absolute"
+        "popup"
         ],
         "pluginsConfig": {
             "tbfed-pagefooter": {
                 "copyright": "Copyright &copy TermuxCHN 2022",
                 "modify_label": "该文件修订时间：",
                 "modify_format": "YYYY-MM-DD HH:mm:ss"
-            },
-            "favicon-absolute":{
-                "favicon": "/favicon.ico"
             },
             "page-treeview": {
                 "copyright": "Copyright &#169; TermuxCHN",
