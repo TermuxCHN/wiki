@@ -5,6 +5,7 @@ on:
       - main
   label:
     types: [created,edited]
+  pull_request:
 jobs:
   build:
     runs-on: ubuntu-latest
