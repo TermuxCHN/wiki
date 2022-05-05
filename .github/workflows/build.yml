@@ -1,1 +1,20 @@
+name: shellcheck
+
+on:
+  push:
+  label:
+      types: [created,edited]
+jobs:
+  ShellCheck:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Build
+        run: |
+          npm i -g gitbook-cli
+          gitbook install
+          gitbook build
+
 
