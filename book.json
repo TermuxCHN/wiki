@@ -1,0 +1,101 @@
+{
+    "title": "Termux第三方中文维基",
+    "description": "为Termux使用者提供帮助",
+    "author": "TermuxCHN",
+    "output.name": "site",
+    "language": "zh-hans",
+    "gitbook": "3.2.3",
+    "root": ".",
+    "links" : {
+        "sidebar" : {
+            "Home" : "https://github.com/termuxchn"
+        }
+    },
+    
+    "plugins": [
+        "-lunr", 
+        "-search", 
+        "search-pro",
+        "back-to-top-button",
+        "chapter-fold",
+        "code",
+        "splitter",
+        "tbfed-pagefooter",
+        "emphasize",
+        "prism", 
+        "-highlight",
+        "-sharing",
+        "sharing-plus",
+        "popup",
+        "github-buttons",
+        "favicon",
+        "valine",
+        "theme-comscore",
+        "copy-code-button",
+        "edit-link-plus"
+        ],
+        "pluginsConfig": {
+            "tbfed-pagefooter": {
+                "copyright": "Copyright &copy TermuxCHN 2022",
+                "modify_label": "该文件修订时间：",
+                "modify_format": "YYYY-MM-DD HH:mm:ss"
+            },
+            "favicon": {
+                "shortcut": "/favicon.ico",
+                "bookmark": "/favicon.ico",
+                "appleTouch": "/appleTouchIconPrecomposed152.png"
+                },
+            "github": {
+                "url": "https://github.com/termuxchn/wiki"
+            },
+            "valine": {
+                "appId": "7e67a12af32e7501a281",
+                "appKey": "f8a8db5ff253073988130a44d5d29d6f192a41f5",
+                "placeholder": "评论重复或者没有评论？刷新一下页面有惊喜！"
+              },
+            "sharing": {
+                "douban": false,
+                "facebook": false,
+                "google": true,
+                "hatenaBookmark": false,
+                "instapaper": false,
+                "line": true,
+                "linkedin": true,
+                "messenger": false,
+                "pocket": false,
+                "qq": true,
+                "qzone": true,
+                "stumbleupon": false,
+                "twitter": true,
+                "viber": false,
+                "vk": false,
+                "weibo": true,
+                "whatsapp": false,
+                "all": [
+                    "weibo", "qq", "qzone", "twitter"
+                ]
+            },
+            "edit-link-plus": {
+                "base": "https://github.com/termuxchn/wiki",
+                "defaultBase": "https://github.com/termuxchn/wiki",
+                "label": {
+                    "en": "Edit This Page",
+                    "zh": "编辑此页面"
+                }
+            },
+
+            "prism": {
+                "css": [
+                    "prismjs/themes/prism-tomorrow.css"
+              ]
+            }
+        },
+
+	"styles": {
+	    "website": "styles/website.css",
+	    "ebook": "styles/ebook.css",
+	    "pdf": "styles/pdf.css",
+	    "mobi": "styles/mobi.css",
+	    "epub": "styles/epub.css"
+	}
+}
