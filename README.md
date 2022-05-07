@@ -1,5 +1,5 @@
 # Termux第三方中文维基
-
+[![Gitbook](https://github.com/TermuxCHN/wiki/actions/workflows/build.yml/badge.svg)](https://github.com/TermuxCHN/wiki/actions/workflows/build.yml)
 ## 介绍
 
 此维基建立的初衷是为Termux使用者提供帮助(~~也可以帮助一些萌新~~)。  
