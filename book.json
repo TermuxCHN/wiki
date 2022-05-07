@@ -54,7 +54,8 @@
                 "repo": "wiki",
                 "owner": "TermuxCHN",
                 "admin": ["2096779623","dreamonex","moe-hacker"],
-                "distractionFreeMode": false
+                "distractionFreeMode": false,
+                "proxy": "https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token"
             },
             "sharing": {
                 "douban": false,
