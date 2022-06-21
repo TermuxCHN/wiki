@@ -13,3 +13,10 @@
 
 **此维基不包含任何关于黑阔的内容**，因为官方已经禁止：https://wiki.termux.com/wiki/hacking
 
+# 贡献
+
+<h1>欢迎PR！</h1>  
+<h1>欢迎PR！</h1>  
+<h1>欢迎PR！</h1>  
+
+PR之前请先看[CONTRIBUTING.md](./CONTRIBUTING.md)
