@@ -1,5 +1,13 @@
 # API
 
+
+
+# 前言
+
+`termux-api`总共提供了57个API
+
+~~写死我了~~
+
 ## 安装
 
 首先去[这里](https://github.com/termux/termux-api/releases/download/v0.50.1/termux-api_v0.50.1+github-debug.apk)下载termux-api，或者从[F-droid](https://f-droid.org/zh_Hans/packages/com.termux.api/)下载 [清华源加速](https://mirrors.tuna.tsinghua.edu.cn/fdroid/repo/com.termux.api_51.apk)
@@ -341,5 +349,85 @@ verify：验证签名。 从标准输入读取数据（原始文件）。
 usage: $SCRIPTNAME [-p 提供者] [-r 请求]
   -p provider  位置提供者 [gps/network/passive] (默认: gps)
   -r request   提出的要求 [once/last/updates] (默认: once)
+```
+
+
+
+### `termux-media-player`
+
+顾名思义，媒体播放器
+
+#### 用法
+
+```shell
+info        显示当前播放信息
+play        如果暂停则继续播放
+play <文件> 播放指定的媒体文件
+pause       暂停播放
+stop        退出播放
+```
+
+### `termux-media-scan`
+
+扫描指定文件并将其添加到“媒体内容提供商”
+
+#### 用法
+
+```shell
+termux-media-scan [-v] [-r] file [文件...]
+-r 递归扫描目录
+-v 详细模式
+```
+
+### `termux-microphone-record`
+
+使用设备上的麦克风录制音频（~~又名Termux牌录音机~~）
+
+#### 用法
+
+```shell
+-d           使用默认值开始录音
+-f <文件>     开始录音到特定文件
+-l <限制秒数>  以指定的限制开始录音（以秒为单位，0 无限制）
+-e <编码器>   使用指定的编码器开始录音（aac、amr_wb、amr_nb）
+-b <比特率>   以指定的比特率开始录音（以 kbps 为单位）
+-r <采样率>   以指定的采样率开始录音（以赫兹为单位）
+-c <数字>     使用指定的通道数开始录音（1、2、...）
+-i           获取有关当前录音的信息
+-q           退出录音
+```
+
+### `termux-nfc`
+
+~~这名字一看就知道~~从/向 NDEF 标签读取/写入数据
+
+#### 用法
+
+```shell
+-r, 读取 short，从NFC中读取短信息 full，从NFC中读取完整信息
+-w, 在NFC上写信息
+-t, NFC的文本
+```
+
+### `termux-notification-channel`
+
+创建或删除通知(**仅支持Android 8.0+**)
+
+#### 用法
+
+```shell
+termux-notification-channel -d channel-id
+termux-notification-channel channel-id channel-name
+使用 -d 删除通知。
+创建通知需要通知 ID 和通知名称。
+该名称将在选项中可见，该 ID 用于在该特定通知上发送通知。
+再次创建具有相同 id 的通知将更改名称。
+创建与已删除通知具有相同 id 的通知将恢复已删除通知的用户设置。
+使用 termux-notification --channel channel-id 在自定义通知上发送通知。
+```
+
+
+
+```she
 ```
 
