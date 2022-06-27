@@ -426,8 +426,115 @@ termux-notification-channel channel-id channel-name
 使用 termux-notification --channel channel-id 在自定义通知上发送通知。
 ```
 
+### `termux-notification-list`
 
+显示当前显示的通知。
 
-```she
+#### 用法
+
+```shell
+termux-notification-list
 ```
+
+对，你没看错，就是直接用🤣
+
+### `termux-notification-remove`
+
+删除之前使用 `termux-notification --id` 显示的通知。
+
+#### 用法
+
+```shell
+termux-notification <ID>
+```
+
+### `termux-notification`
+
+显示系统通知。 
+
+#### 用法
+
+```shell
+  --action action          按下通知时执行的操作
+  --alert-once             编辑通知时不提醒
+  --button1 text           在第一个通知按钮上显示的文本
+  --button1-action action  在第一个通知按钮上执行的操作
+  --button2 text           在第二个通知按钮上显示的文本
+  --button2-action action  在第二个通知按钮上执行的操作
+  --button3 text           在第三个通知按钮上显示的文本
+  --button3-action action  在第三个通知按钮上执行的操作
+  -c/--content content     通知中显示的内容。 将优先于标准输入。 如果内容没有作为参数或标准输入传递，那么会有 3 秒的延迟。
+  --channel channel-id     指定应发送此通知的通知通道 ID。在低于 8.0 的 Android 版本上，这是无操作的。 使用 termux-notification 频道创建自定义频道。如果频道 id 无效，则不会发送通知。
+  --group group            通知组（同一组的通知一起显示）
+  --help-actions           显示actions帮助
+  -i/--id id               通知 id（将覆盖任何以前具有相同 id 的通知）
+  --icon icon-name         设置状态栏中显示的图标。 在 https://material.io/resources/icons/ 上查看可用的图标（默认图标：event_note）
+  --image-path path        将在通知中显示的图像的绝对路径
+  --led-color rrggbb       闪烁 LED 的颜色为 RRGGBB（默认值：none）
+  --led-off milliseconds   LED 在闪烁时关闭的毫秒数（默认值：800）
+  --led-on milliseconds    LED 在闪烁时亮起的毫秒数（默认值：800）
+  --on-delete action       清除通知时执行的操作
+  --ongoing                固定通知
+  --priority prio          通知优先级（高/低/最大/最小/默认）
+  --sound                  用通知播放声音
+  -t/--title title         要显示的通知标题
+  --vibrate pattern        振动模式，逗号分隔，如 500,1000,200
+  --type type              要使用的通知样式（默认/媒体）媒体操作（可与 --type "media" 一起使用）
+  --media-next             在 media-next 按钮上执行的操作
+  --media-pause            在媒体暂停按钮上执行的操作
+  --media-play             在媒体播放按钮上执行的操作
+  --media-previous         在 media-previous 按钮上执行的操作
+```
+
+###### actions的用法
+
+```shell
+此帮助指的是 --action、--on-delete、--button-1-action 和 --media-next 等选项的参数。
+所有这些命令都将一个动作字符串作为它们的参数，它被馈送到`dash -c`。
+使用动作时必须牢记一些重要的事情：
+您应该使用在终端之外执行操作的操作，例如 --action "termux-toast hello"。
+任何输出到终端的东西都是无用的，所以输出应该被重定向（--action "ls > ~/ls.txt"）或以不同的方式显示给用户（--action "ls|termux-toast" ）。
+在单个操作中运行多个命令就像：
+--action "command1; command2; command3"
+或者"
+--action "if [ -e file ]; then termux-toast yes; else termux-toast no; fi".
+对于更复杂的事情，您应该将脚本放在一个文件中，使其可执行，并将其用作操作：
+--action ~/bin/script
+该操作在不同的环境（不是子shell）中运行。 因此，您的环境丢失了（最明显的是 $PATH），并且 ~/.profile 也没有来源。 因此，如果您需要 $PATH，您应该：
+ - 如果操作是脚本，请在脚本中明确设置 (例如： export PATH="$HOME/bin:\$PATH")
+ - 或使用类似的东西： --action "bash -l -c 'command1; command2'").
+在 Android N 或更高版本上，您可以在您的操作中使用特殊变量 $REPLY 来使用 Android 的直接回复功能。
+这会提示用户直接在通知中输入一些文本，然后将其替换为您的操作。
+ - termux-notification --button1 "答案" --button1-action "termux-toast \\$REPLY"
+将调用该操作：
+ - termux-toast "用户输入的文本"
+小心为单引号或双引号正确转义 shell 命令，例如：
+  --button1-action 'something $REPLY' or --button1-action "something \\$REPLY"
+  
+```
+
+### `termux-saf-create`
+
+在Termux:API管理的文件夹中创建文件。
+
+#### 用法
+
+```shell
+-t 指定文件的 mime 类型。 其他应用程序需要 MIME 类型来识别内容
+例如 一段录像。 如果未指定，则假定为“application/octet-stream”，即原始二进制数据。返回您可以使用 termux-saf-read 和 termux-saf-write 读取和写入文件的 URI。您可以明确指定 mime 类型或根据文件扩展名猜测它。作为文件夹 URI，您可以使用 由 termux-saf-dirs 或 termux-saf-ls.Android 列出的目录的 URI 不允许创建具有相同名称的文件，因此如果具有该名称的文件或文件夹已经存在，则名称可能会更改。您 可以使用 termux-saf-stat 和返回的 URI 来获取它真正给出的名称。 
+```
+
+### `termux-saf-dirs`
+
+与 `termux-saf-ls` 相同的格式列出您提供给 Termux:API 的所有目录。
+
+#### 用法
+
+```shell
+这意味着这列出了包含您可以使用其他 termux-saf-*`` 命令访问的所有目录的“目录”。
+URI 可以与其他 termux-saf-* 命令一起使用，以创建文件和文件夹并列出目录内容。
+请参阅 termux-saf-managedir 以授予 Termux:API 对文件夹的访问权限。
+```
+
+
 
