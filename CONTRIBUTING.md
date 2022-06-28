@@ -4,6 +4,8 @@
 
 图片：OSS/优质图床/Github
 
+commit格式：[文件名]: 内容，具体可用参考[git历史](https://github.com/TermuxCHN/wiki/commits/main)
+
 ## 可选
 
 在[捐赠](./捐赠.md)添加你的捐赠方式
