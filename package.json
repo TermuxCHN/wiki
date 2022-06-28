@@ -10,7 +10,6 @@
     "gitbook-plugin-chapter-fold": "^0.0.4",
     "gitbook-plugin-code": "^0.1.0",
     "gitbook-plugin-copy-code-button": "0.0.2",
-    "gitbook-plugin-custom-favicon": "0.0.4",
     "gitbook-plugin-edit-link-plus": "^0.1.1",
     "gitbook-plugin-emphasize": "^1.1.0",
     "gitbook-plugin-favicon": "^0.0.2",
