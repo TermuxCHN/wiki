@@ -21,6 +21,5 @@ jobs:
         git_name: 2096779623
         time_zone: Asia/Shanghai
         source_branch: main
-        publish_branch: gh-pages
         source_edit_time: true
         publish_push_force: true
