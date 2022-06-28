@@ -165,7 +165,7 @@ pkg remove termux-api
 
 #### 用法
 
-`termux-camera-photo [-c 摄像头ID] 输出文件名`
+`termux-camera-photo [-c 摄像头ID] 输出文件`
 
 配合`termimage`食用效果更好，拍完之后就能看：`termimage [刚刚输出的图片文件]`
 
@@ -536,5 +536,303 @@ URI 可以与其他 termux-saf-* 命令一起使用，以创建文件和文件�
 请参阅 termux-saf-managedir 以授予 Termux:API 对文件夹的访问权限。
 ```
 
+### `termux-saf-ls`
 
+列出有URI 标识的文件夹中的文件和文件夹。
 
+#### 用法
+
+```shell
+您可以通过以下方式获取文件夹 URI：
+- 使用 termux-saf-ls 列出文件夹
+- 使用 termux-saf-managedir 授予 Termux:API 对文件夹的访问权限
+- 使用 termux-saf-dirs 列出您授予 Termux:API 访问权限的文件夹
+- 使用 termux-saf-mkdir 创建文件夹
+该列表以 JSON 数组的形式返回，每个条目有一个 JSON 对象。
+对象具有键：
+- 'name' 用于人类可读的名称
+- 'uri' 表示你可以与其他 termux-saf-* 命令一起使用的 URI
+- 'type' 代表 mime 类型
+- 'length' 表示大小（如果它是一个文件）
+您可以通过特殊的 mime 类型“vnd.android.document/directory”识别文件夹。
+```
+
+### `termux-saf-managedir`
+
+打开系统自带文件管理并让您指定 Termux:API 可以访问的文件夹。
+
+#### 用法
+
+```shell
+然后，您可以使用 termux-saf-* 实用程序来管理该文件夹中的内容。
+返回标识目录的 URI，此 URI 可与其他 termux-saf-* 命令一起使用以创建文件和文件夹并列出目录内容。
+如果您关闭文件管理器，则会返回一个空字符串。
+您可以使用 termux-saf-dirs 列出您授予 Termux:API 访问权限的所有目录。
+```
+
+### `termux-saf-mkdir`
+
+通过 SAF 创建目录，这与 `termux-saf-create` 的行为类似，仅适用于目录。
+
+#### 用法
+
+`termux-saf-mkdir <目录名>`
+
+### `termux-saf-read`
+
+从 URI 标识的文件中读取数据并将数据写入标准输出。
+
+#### 用法
+
+```shell
+您可以使用管道处理数据或将其重定向到文件中以制作本地副本。
+请参阅 termux-saf-list 以获取文件的 URI。
+```
+
+### `termux-saf-rm`
+
+删除指定 URI 处的文件或文件夹。 有关详细信息，请参阅其他 `termux-saf-*` 命令。
+
+成功返回 0，如果无法删除文件或文件夹，则返回 1，如果发生另一个错误，则返回 2。
+
+#### 用法
+
+```shell
+termux-saf-rm <文件&文件夹名字>
+```
+
+### `termux-saf-stat`
+
+将文件或文件夹信息作为 JSON 对象返回，格式与 termux-saf-ls 中的条目相同。
+
+#### 用法
+
+`termux-saf-stat <文件&文件夹名字>`
+
+### `termux-saf-write`
+
+将标准输入写入由 URI 标识的现有文件。**先前的内容会被删除！**
+
+#### 用法
+
+`termux-saf-write <文件>`
+
+### `termux-sensor`
+
+获取有关传感器类型以及实时数据的信息。
+
+#### 用法
+
+```shell
+  -a, all            聆听所有传感器（警告！可能对电池有影响）
+  -c, cleanup        清理（释放传感器资源）
+  -l, list           显示可用传感器列表
+  -s, sensors [,,,]  监听的传感器（可以只包含部分名称）
+  -d, delay [毫秒]    接收新传感器更新前的延迟时间（以毫秒为单位）
+  -n, limit [数字]    读取传感器的次数（默认：连续）（分钟：1）
+```
+
+### `termux-share`
+
+如果没有给出文件参数，则共享指定为参数的文件或在标准输入上接收到的文本。
+
+#### 用法
+
+```shell
+  -a action        对共享内容执行的操作：
+                     edit(编辑)/send(发送)/view(查看) (默认:view)
+  -c content-type  要使用的内容类型（默认值：从文件扩展名中猜测，标准输入为 text/plain）
+  -d               如果选择了一个而不是显示选择器，则共享给默认接收器
+  -t title         用于共享内容的标题（默认值：shared file name）
+```
+
+### `termux-sms-inbox`
+
+这个脚本被替换成`termux-sms-list`了，下一个🤣
+
+### `termux-sms-list`
+
+列出SMS短信。
+
+#### 用法
+
+```shell
+用法: termux-sms-list [-d] [-l 限制] [-n] [-o 抵消] [-t 输出] [-c] [-f 数字]
+-l 限制短信列表中的偏移量（默认值：$PARAM_LIMIT）
+   -o 短信列表中的偏移量（默认值：$PARAM_OFFSET）
+   -t 键入要列出的消息类型（默认值：$PARAM_TYPE）：$SUPPORTED_TYPES
+   -c 对话列表（每个对话的唯一项目）
+   -f number 定位消息的编号
+   -n（过时）显示电话号码
+   -d（过时）显示创建消息的日期
+```
+
+### `termux-sms-send`
+
+用人话来讲就是发短信。![doge](https://alpha-q3.sourcegcdn.com/2022/06/28/fjId9OKu.png)
+
+#### 用法
+
+```shell
+用法: termux-sms-send -n 电话号码[,号码2,号码3,...] [-s 卡1/卡2] [文字]
+向指定的收件人号码发送 SMS 消息。 要发送的文本要么作为参数提供，要么从标准输入中读取（如果没有给出参数）。
+  -n number(s)  收件人号码 - 用逗号分隔多个号码
+  -s slot       要使用的 sim 插槽 - 如果插槽号无效或缺少 READ_PHONE_STATE 权限，则失败
+```
+
+### `termux-speech-to-text`
+
+~~一看就知道这是语音转文字~~
+
+#### 用法
+
+```shell
+termux-speech-to-text
+```
+
+~~对，你没看错，就是直接用~~
+
+其实还能加个进度条：
+
+`termux-speech-to-text -p`
+
+### `termux-storage-get`
+
+向系统请求文件并输出到指定文件。
+
+#### 用法
+
+```shell
+termux-storage-get <文件>
+```
+
+### `termux-telephony-call`
+
+用人话讲就是打电话![doge](https://alpha-q3.sourcegcdn.com/2022/06/28/fjId9OKu.png)
+
+#### 用法
+
+```shell
+termux-telephony-call <电话号码(例如：114514)>
+```
+
+### `termux-toast`
+
+在 [Toast](https://baike.baidu.com/item/toast/13002938) 中显示文本（短暂弹出）。
+
+#### 用法
+
+```shell
+Toast 文本要么作为参数提供，要么从标准输入中读取
+如果没有给出参数。 参数将优先于标准输入。
+如果 toast 文本没有作为参数或标准输入传递，那么会有
+延迟 3 秒。
+ -b  设置背景颜色~~（默认：gay）~~(默认：gray（灰色）)
+ -c  设置文本颜色（默认：white(白色)）
+ -g  设置吐司的位置：[top(上)、middle(中)，bottom(下)]（默认值：middle）
+ -s  只展示亿会儿吐司
+注意：颜色可以是标准名称（即红色）或 6 / 8 位十六进制值（即“#FF0000”或“#FFFF0000”），其中 order 为 (AA)RRGGBB。 无效颜色将恢复为默认值
+```
+
+### `termux-torch`
+
+打开/关闭手电筒
+
+#### 用法
+
+`termux-torch [on(开)/off(关)]`
+
+### `termux-tts-engines`
+
+获取有关可用文本转语音 (TTS) 引擎的信息。 可以使用 -e 选项将引擎的名称提供给 `termux-tts-speak` 命令。
+
+### `termux-tts-speak`
+
+用人话讲就是调用系统TTS引擎来语音转文字
+
+#### 用法
+
+```shell
+用法: termux-tts-speak [-e engine] [-l language] [-n region] [-v variant] [-p pitch] [-r rate] [-s stream] [text-to-speak]
+-e engine 要使用的 TTS 引擎（参见 termux-tts-engines）
+   -l language 语言（部分引擎可能不支持）
+   -n region 说话的语言区域
+   -v 语言的变体变体
+   -p 在语音中使用的音高。 1.0 是正常音高，较低的值会降低合成语音的音调，较大的值会增加它。
+   -r 要使用的语速。 1.0 是正常语速，较低的值会减慢语音（0.5 是正常语速的一半），而较大的值会加速语音（2.0 是正常语速的两倍）。
+   -s 要使用的流音频流（默认：NOTIFICATION），以下之一：ALARM、MUSIC、NOTIFICATION、RING、SYSTEM、VOICE_CALL
+```
+
+### `termux-usb`
+
+列出或访问 USB 设备，**无法直接访问USB设备**
+
+#### 用法
+
+```shell
+  -l           列出可用USB设备
+  -r           如有必要，显示权限请求对话框
+  -e command   使用引用设备的文件描述符作为参数执行指定的命令（除非给出 -E 参数）
+  -E           将文件描述符作为 env var 而不是作为命令行参数传输
+```
+
+### `termux-vibrate`
+
+用人话讲就是~~移动版本的筋膜枪~~
+
+#### 用法
+
+```shell
+-d duration 以毫秒为单位振动的持续时间（默认值：1000）
+-f 即使在静音模式下也强制振动(社死)
+```
+
+### `termux-wallpaper`
+
+更改你的手机壁纸。
+
+**这个不是用来改Termux背景的！**
+
+#### 用法
+
+```shell
+-f <file>  从文件设置壁纸
+-u <url>   从URL资源设置壁纸
+-l         为锁屏设置壁纸（Android 7及更高版本）
+```
+
+### `termux-wifi-connectioninfo`
+
+获取有关当前 wifi 连接的信息。
+
+#### 用法
+
+`termux-wifi-connection-info`
+
+你没看错，它什么参数都不用加![doge](https://alpha-q3.sourcegcdn.com/2022/06/28/fjId9OKu.png)
+
+### `termux-wifi-enable`
+
+打开/关闭 WIFI
+
+#### 用法
+
+```shell
+termux-wifi-enable [true(打开)/false(关闭)]
+```
+
+### `termux-wifi-scaninfo`
+
+获取有关wifi 扫描的信息。
+
+#### 用法
+
+```shell
+termux-wifi-scaninfo
+```
+
+你没看错，它也没有参数，~~除了help~~![doge](https://alpha-q3.sourcegcdn.com/2022/06/28/fjId9OKu.png)
+
+## 结尾
+
+~~`termux-api`太过丰富~~，看到这里还不[捐赠一下](https://termuxchn.github.io/wiki/%E6%8D%90%E8%B5%A0.html)![doge](https://alpha-q3.sourcegcdn.com/2022/06/28/fjId9OKu.png)
