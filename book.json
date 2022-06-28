@@ -41,10 +41,10 @@
                 "modify_format": "YYYY-MM-DD HH:mm:ss"
             },
             "favicon": {
-                "shortcut": "https://termuxchn.github.io/wiki/favicon.ico",
-                "bookmark": "https://termuxchn.github.io/wiki/favicon.ico",
-                "appleTouch": "https://termuxchn.github.io/wiki/appleTouchIconPrecomposed152.png"
-                },
+                "shortcut": "favicon.ico",
+                "bookmark": "favicon.ico",
+                "appleTouch": "appleTouchIconPrecomposed152.png"
+            },
             "github": {
                 "url": "https://github.com/termuxchn/wiki"
             },
