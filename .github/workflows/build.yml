@@ -16,7 +16,6 @@ jobs:
       uses: ZanderZhao/gitbook-action@v1.2.4
       with:
         token: ${{ secrets.PERSONAL_TOKEN }}
-        source_token: ${{ secrets.PERSONAL_TOKEN }
         publish_token: ${{ secrets.PERSONAL_TOKEN }
         git_name: 2096779623
         time_zone: Asia/Shanghai
