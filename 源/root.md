@@ -2,9 +2,10 @@
 
 ## 安卓5
 ```bash
-deb https://termux.org/termux-root-packages-21-bin root stable
+deb https://termux.dev/termux-root-packages-21-bin root stable
 ```
 
 ## 安卓7
 ```bash
-deb https://packages-cf.termux.org/apt/termux-root/ root stable
+deb https://packages-cf.termux.dev/apt/termux-root/ root stable
+```
