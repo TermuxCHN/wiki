@@ -6,6 +6,7 @@
   "dependencies": {
     "axios": "^0.27.2",
     "gitalk": "^1.7.2",
+    "gitbook-plugin-advanced-emoji": "^0.2.2",
     "gitbook-plugin-back-to-top-button": "^0.1.4",
     "gitbook-plugin-chapter-fold": "^0.0.4",
     "gitbook-plugin-code": "^0.1.0",
@@ -17,6 +18,7 @@
     "gitbook-plugin-github-buttons": "^3.0.0",
     "gitbook-plugin-mygitalk": "^0.2.6",
     "gitbook-plugin-page-treeview": "^3.0.6",
+    "gitbook-plugin-pageview-count": "^1.0.1",
     "gitbook-plugin-popup": "^0.0.1",
     "gitbook-plugin-prism": "^2.4.0",
     "gitbook-plugin-search-pro": "^2.0.2",
