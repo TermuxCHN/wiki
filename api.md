@@ -832,7 +832,3 @@ termux-wifi-scaninfo
 ```
 
 你没看错，它也没有参数，~~除了help~~![doge](https://alpha-q3.sourcegcdn.com/2022/06/28/fjId9OKu.png)
-
-## 结尾
-
-~~`termux-api`太过丰富~~，看到这里还不[捐赠一下](https://termuxchn.github.io/wiki/%E6%8D%90%E8%B5%A0.html)![doge](https://alpha-q3.sourcegcdn.com/2022/06/28/fjId9OKu.png)
