@@ -21,3 +21,4 @@ jobs:
         source_branch: main
         source_edit_time: true
         publish_push_force: true
+        publish_cname: wiki.termuxchn.xyz
