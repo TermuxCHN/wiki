@@ -3,4 +3,5 @@
 <allow-access-from domain="*.github.com" />
 <allow-access-from domain="*.bytecdntp.com" />
 <allow-access-from domain="*.bytedance.com" />
+<allow-access-from domain="hitcounter.pythonanywhere.com" />
 </cross-domain-policy>
