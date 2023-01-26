@@ -4,7 +4,7 @@
   "description": "Termux第三方中文维基",
   "main": "index.js",
   "dependencies": {
-    "axios": "^1.2.2",
+    "axios": "^1.2.5",
     "gitalk": "^1.8.0",
     "gitbook-plugin-advanced-emoji": "^0.2.2",
     "gitbook-plugin-back-to-top-button": "^0.1.4",
