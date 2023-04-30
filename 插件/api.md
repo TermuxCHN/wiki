@@ -8,7 +8,7 @@
 
 ~~写死我了~~
 
-## 安装
+## 下载
 
 首先去[这里](https://github.com/termux/termux-api/releases/download/v0.50.1/termux-api_v0.50.1+github-debug.apk)下载termux-api，或者从[F-droid](https://f-droid.org/zh_Hans/packages/com.termux.api/)下载 [清华源加速](https://mirrors.tuna.tsinghua.edu.cn/fdroid/repo/com.termux.api_51.apk)
 
